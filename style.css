@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.instagram-story-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    margin: 20px auto;
+}
+
+.instagram-story {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+}
+
+#fortune-cookie {
+    width: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+#quote {
+    margin-top: 20px;
+    font-size: 20px;
+    font-style: italic;
+    display: none;
+}
+
+#save-image {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
