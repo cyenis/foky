@@ -1,59 +1,61 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}
-
-h1 {
-    margin: 0;
-}
-
-.instagram-story-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    margin: 20px auto;
+.container {
+    position: relative;
+    width: 1080px; /* Instagram story width */
+    height: 1920px; /* Instagram story height */
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    transform: scale(0.4); /* Scale down for display, adjust as necessary */
+    transform-origin: top left; /* Ensure container scales from top left corner */
 }
 
 .instagram-story {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 1080px;
+    /* Instagram story width */
+    height: 1920px;
+    /* Instagram story height */
+    margin: 0 auto;
     background-color: #f2f2f2;
-    border-radius: 50%;
 }
 
-#fortune-cookie {
-    width: 120px;
+.fortune-cookie {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 256px;
+    height: 256px;
     cursor: pointer;
 }
 
-#quote {
-    margin-top: 20px;
-    font-size: 20px;
-    font-style: italic;
-    display: none;
+.quote {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    color: #666666;
+    font-size: 58px;
+    /* Adjust as necessary */
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    font-weight: 500;
 }
 
-#save-image {
+.save-image {
+    display: block;
+    margin: 20px auto;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #333333;
     border: none;
     border-radius: 5px;
-    background-color: #4caf50;
-    color: #fff;
     cursor: pointer;
 }
+
+.save-image:hover {
+    background-color: #666666;
+}
+
+
