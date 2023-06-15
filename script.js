@@ -132,6 +132,9 @@ function saveInstagramStory() {
 
   html2canvas(storyContainer)
     .then(canvas => {
+      const context = canvas.getContext('2d');
+
+      // Save the canvas as an image
       const imageDataUrl = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = imageDataUrl;
@@ -142,6 +145,7 @@ function saveInstagramStory() {
       console.error('Error generating Instagram story image:', error);
     });
 }
+
 
 // Attach event listeners
 const cookieImg = document.getElementById('cookie-img');
