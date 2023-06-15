@@ -95,14 +95,36 @@ function generateQuote() {
     quoteDiv.innerText = "\"" + quotes[randomIndex] + "\"";
 }
 
+// function saveImage() {
+//     html2canvas(story).then(function(canvas) {
+//         var a = document.createElement('a');
+//         a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+//         a.download = 'quote.jpg';
+//         a.click();
+//     });
+// }
+
 function saveImage() {
-    html2canvas(story).then(function(canvas) {
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-        a.download = 'quote.jpg';
-        a.click();
+    html2canvas(story).then(function (canvas) {
+      canvas.toBlob(function (blob) {
+        const dataUrl = URL.createObjectURL(blob);
+        const tempLink = document.createElement('a');
+        tempLink.href = dataUrl;
+  
+        if (typeof tempLink.download === 'string') {
+          tempLink.setAttribute('download', 'quote.jpg');
+        } else {
+          tempLink.setAttribute('target', '_blank');
+        }
+  
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+  
+        URL.revokeObjectURL(dataUrl);
+      });
     });
-}
+  }
 
 cookie.addEventListener('click', generateQuote);
 saveImageBtn.addEventListener('click', saveImage);

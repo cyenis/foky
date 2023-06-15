@@ -20,7 +20,7 @@
 
 .fortune-cookie {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 256px;
@@ -37,7 +37,7 @@
     color: #666666;
     font-size: 58px;
     /* Adjust as necessary */
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lato', cursive;
     text-align: center;
     font-weight: 500;
 }
