@@ -1,61 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 .container {
-    position: relative;
-    width: 1080px; /* Instagram story width */
-    height: 1920px; /* Instagram story height */
-    margin: 0 auto;
-    background-color: #f2f2f2;
-    transform: scale(0.4); /* Scale down for display, adjust as necessary */
-    transform-origin: top left; /* Ensure container scales from top left corner */
+  text-align: center;
+  margin-top: 50px;
+}
+
+.story-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .instagram-story {
-    position: relative;
-    width: 1080px;
-    /* Instagram story width */
-    height: 1920px;
-    /* Instagram story height */
-    margin: 0 auto;
-    background-color: #f2f2f2;
+  position: relative;
+  width: 360px; /* Instagram story width */
+  height: 640px; /* Instagram story height */
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.fortune-cookie {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 256px;
-    height: 256px;
-    cursor: pointer;
+#cookie-img {
+  width: 200px;
+  cursor: pointer;
 }
 
-.quote {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    color: #666666;
-    font-size: 58px;
-    /* Adjust as necessary */
-    font-family: 'Lato', cursive;
-    text-align: center;
-    font-weight: 500;
+.quote-container {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.save-image {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #333333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#fortune-text {
+  font-size: 24px; /* Increase the font size */
+  font-weight: bold;
+  color: #000;
+  font-family: 'Playfair Display', serif; /* Use Playfair Display font */
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.save-image:hover {
-    background-color: #666666;
+.hidden {
+  display: none; /* Initially hide the quote */
 }
 
+#save-button {
+  margin-top: 40px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+#save-button:hover {
+  background-color: #0056b3;
+}
+
+  
+  .shake {
+    animation: shake 0.8s ease-in-out infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+  
