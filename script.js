@@ -103,20 +103,18 @@ let fortunes = [
 ];
 
 
-// Get a random fortune from the array
 function getRandomFortune() {
   const randomIndex = Math.floor(Math.random() * fortunes.length);
   return fortunes[randomIndex];
 }
 
-// Shake the cookie image for the given duration in milliseconds
 function shakeCookie(duration) {
   const cookieImg = document.getElementById('cookie-img');
   cookieImg.classList.add('shake');
 
   setTimeout(() => {
-      cookieImg.classList.remove('shake');
-      showFortune();
+    cookieImg.classList.remove('shake');
+    showFortune();
   }, duration);
 }
 
@@ -125,49 +123,58 @@ function showFortune() {
   const cookieImg = document.getElementById('cookie-img');
 
   if (fortuneText.classList.contains('hidden')) {
-      const randomFortune = getRandomFortune();
-      fortuneText.textContent = randomFortune;
-      fortuneText.classList.remove('hidden');
+    const randomFortune = getRandomFortune();
+    fortuneText.textContent = randomFortune;
+    fortuneText.classList.remove('hidden');
   } else {
-      fortuneText.classList.add('hidden');
-      const randomFortune = getRandomFortune();
-      fortuneText.textContent = randomFortune;
+    fortuneText.classList.add('hidden');
+    const randomFortune = getRandomFortune();
+    fortuneText.textContent = randomFortune;
   }
 }
 
-// Handle cookie click event
 function handleCookieClick() {
   const cookieImg = document.getElementById('cookie-img');
 
   if (!cookieImg.classList.contains('shake')) {
-      shakeCookie(1000);
+    shakeCookie(1000);
   }
 }
 
-// Save the Instagram story as an image
-function saveInstagramStory() {
+async function shareInstagramStory() {
   const storyContainer = document.querySelector('.instagram-story');
 
-  html2canvas(storyContainer)
-    .then(canvas => {
-      const context = canvas.getContext('2d');
+  const canvas = await html2canvas(storyContainer);
+  canvas.toBlob(async function (blob) {
+    const filesArray = [
+      new File([blob], 'instagram-story.png', {
+        type: 'image/png',
+        lastModified: new Date().getTime(),
+      }),
+    ];
 
-      // Save the canvas as an image
-      const imageDataUrl = canvas.toDataURL('image/png');
+    const shareData = {
+      title: 'My Instagram Story',
+      files: filesArray,
+    };
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData).catch((error) => {
+        console.log('Error sharing:', error);
+      });
+    } else {
+      // Fallback to download image if sharing is not supported
       const link = document.createElement('a');
-      link.href = imageDataUrl;
+      link.href = URL.createObjectURL(blob);
       link.download = 'instagram-story.png';
       link.click();
-    })
-    .catch(error => {
-      console.error('Error generating Instagram story image:', error);
-    });
+    }
+  }, 'image/png');
 }
 
 
-// Attach event listeners
 const cookieImg = document.getElementById('cookie-img');
 const saveButton = document.getElementById('save-button');
 
 cookieImg.addEventListener('click', handleCookieClick);
-saveButton.addEventListener('click', saveInstagramStory);
+saveButton.addEventListener('click', shareInstagramStory);
