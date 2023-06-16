@@ -103,6 +103,7 @@ let fortunes = [
 ];
 
 
+
 function getRandomFortune() {
   const randomIndex = Math.floor(Math.random() * fortunes.length);
   return fortunes[randomIndex];
@@ -147,8 +148,8 @@ async function shareInstagramStory() {
   const canvas = await html2canvas(storyContainer);
   canvas.toBlob(async function (blob) {
     const filesArray = [
-      new File([blob], 'instagram-story.png', {
-        type: 'image/png',
+      new File([blob], 'instagram-story.jpg', {
+        type: 'image/jpeg',
         lastModified: new Date().getTime(),
       }),
     ];
@@ -166,12 +167,11 @@ async function shareInstagramStory() {
       // Fallback to download image if sharing is not supported
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = 'instagram-story.png';
+      link.download = 'instagram-story.jpg';
       link.click();
     }
-  }, 'image/png');
+  }, 'image/jpeg');
 }
-
 
 const cookieImg = document.getElementById('cookie-img');
 const saveButton = document.getElementById('save-button');
